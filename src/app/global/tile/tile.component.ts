@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./tile.component.scss']
 })
 export class TileComponent {
-  @Input() product: Object;
+  @Input() product: any;
 }
