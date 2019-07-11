@@ -8,10 +8,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HomeModule } from './home/home.module';
+import { SigninModule } from './signin/signin.module';
+import { RegisterModule } from './register/register.module';
+import {AboutComponent} from './about/about.component'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +23,9 @@ import { HomeModule } from './home/home.module';
     NavModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    HomeModule
+    HomeModule,
+    SigninModule,
+    RegisterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
