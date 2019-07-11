@@ -1,19 +1,21 @@
 <div class="tile">
-    <div class="card">
-      <div class="img-container pointer" style="height:130px; width: 190px" >
-        <p>Image</p>
-      </div>
-      <p class="my-2 d-block text-left font-weight-bold text-danger">
-        Brand
-      </p>
-      <div class="card-text tl">
-        <ul class="ltn">
-          <li class="fb pointer hover" style="height:80px; line-height:20px; overflow-y:hidden"> Product Name</li>
-          <li>start rating</li>
-          <li>$8.00</li>
-        </ul>
-        <button class="btn btn-primary float-right display-inline" type="button">Add to cart</button>
-      </div>
+    <div class="card mb-2">
+        <div class="card-body">
+            <p class="img-container pointer" style="height:130px; width: 190px">
+                <img src={{product.imageurls}} height="100%" width="auto" alt="image" />
+            </p>
+            <p class="my-2 d-block text-left font-weight-bold text-danger">
+                {{product.brand}}
+            </p>
+            <div class="card-text tl">
+                <ul class="ltn">
+                <li class="fb pointer hover" style="height:80px; line-height:20px; overflow-y:hidden"> {{product.name}}</li>
+                <li><star-rating value={{product.rating}} checkedcolor="orange" uncheckedcolor="gray" size="15px"></star-rating></li>
+                <li>${{product.prices_amountmin}}</li>
+                </ul>
+            </div>
+            <button class="btn btn-primary" type="button">Add to cart</button>
+        </div>
     </div>
   </div>
   

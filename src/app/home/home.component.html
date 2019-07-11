@@ -3,26 +3,30 @@
       <app-carousel></app-carousel>
     </div>
     <div class="container my-4">
-      <div class="container tc">
-        <div class="alert alert-primary" role="alert">
-          <span class="display-inline-block py-1 font-weight-bold">Deal of the Day</span>
-          <button class="btn btn-danger float-right display-inline" type="submit">Show All</button>
-        </div>
-        <div class="row">
-          <div class="col">
-            <app-tile></app-tile>
-          </div>
-        </div>
-        <div class="alert alert-primary" role="alert">
-            <span class="display-inline-block py-1 font-weight-bold">Low-cost items</span>
+        <div class="alert alert-info clearfix" role="alert">
+            <span class="display-inline-block py-1 font-weight-bold">Deal of the Day</span>
             <button class="btn btn-danger float-right display-inline" type="submit">Show All</button>
-          </div>
-          <div class="row">
-            <div class="col">
-              <app-tile></app-tile>
+        </div>
+        <div class="container tc">
+            <div class="row">
+                <div class="col" *ngFor="let dealProduct of dealProducts">
+                    <app-tile [product]="dealProduct"></app-tile>
+                </div>
             </div>
-          </div>
-      </div>
+        </div>
+    </div>
+    <div class="container my-4">
+            <div class="alert alert-success clearfix" role="alert">
+                    <span class="display-inline-block py-1 font-weight-bold">Low-cost Items</span>
+                    <button class="btn btn-danger float-right display-inline" type="submit">Show All</button>
+                </div>
+                <div class="container tc">
+                    <div class="row">
+                        <div class="col" *ngFor="let lowCostProduct of lowCostProducts">
+                            <app-tile [product]="lowCostProduct"></app-tile>
+                        </div>
+                    </div>
+                </div>
     </div>
 </div>
     

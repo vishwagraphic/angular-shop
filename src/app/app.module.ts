@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NavModule } from './nav/nav.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { HomeModule } from './home/home.module';
     BrowserModule,
     AppRoutingModule,
     NavModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     HomeModule
   ],
