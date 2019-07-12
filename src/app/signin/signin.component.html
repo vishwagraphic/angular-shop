@@ -1,8 +1,8 @@
 <div class="container my-5 form-width">
-        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <form name="form" (ngSubmit)="f.form.valid && signInForm()" #f="ngForm" novalidate>
           <div class="form-group">
             <label for="signInEmail">Email</label>
-            <input required email ngModel 
+            <input required email [(ngModel)] = "user.email"  
                             #signInEmail="ngModel" 
                             name="signInEmail" 
                             id="signInEmail" 
@@ -15,7 +15,7 @@
           </div>
           <div class="form-group">
               <label for="signInPassword">Password</label>
-              <input required ngModel 
+              <input required [(ngModel)] = "user.password"  
                               #signInPassword="ngModel" 
                               type="password" 
                               name="signInPassword" 

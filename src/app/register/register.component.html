@@ -1,8 +1,8 @@
 <div class="container my-5 form-width">
-        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && registerForm()" novalidate>
             <div class="form-group">
                 <label for="registerName">Name</label>
-                <input required minlength="3" ngModel 
+                <input required minlength="3" [(ngModel)] = "user.name" 
                                 #registerName="ngModel" 
                                 name="registerName" 
                                 id="registerName" 
@@ -15,7 +15,7 @@
               </div>
           <div class="form-group">
             <label for="registerEmail">Email</label>
-            <input required email ngModel 
+            <input required email [(ngModel)] = "user.email" 
                             #registerEmail="ngModel" 
                             name="registerEmail" 
                             id="registerEmail" 
@@ -28,7 +28,7 @@
           </div>
           <div class="form-group">
               <label for="registerPassword">Password</label>
-              <input required ngModel 
+              <input required [(ngModel)] = "user.password"  
                               #registerPassword="ngModel" 
                               type="password" 
                               name="registerPassword" 
@@ -39,7 +39,7 @@
               </div>
           </div>
           <div class="my-4">
-            <button class="btn btn-primary w-100" type="submit">Register</button>
+            <input class="btn btn-primary w-100" value="Register" type="submit" />
           </div>
         </form>
       </div>
