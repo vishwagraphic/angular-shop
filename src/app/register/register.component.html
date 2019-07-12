@@ -1,5 +1,5 @@
-<div class="container my-4">
-        <form>
+<div class="container my-5 form-width">
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
             <div class="form-group">
                 <label for="registerName">Name</label>
                 <input required minlength="3" ngModel 
@@ -8,7 +8,7 @@
                                 id="registerName" 
                                 type="text"
                                 class="form-control">
-                <div class="text-danger" *ngIf="registerName.touched && !registerName.valid">
+                <div class="text-danger" *ngIf="(f.submitted || registerName.touched) && !registerName.valid">
                   <div *ngIf="registerName.errors.required">Please enter your name</div>
                   <div *ngIf="registerName.errors.minlength">Please enter full name</div>
                 </div>
@@ -21,7 +21,7 @@
                             id="registerEmail" 
                             type="text"
                             class="form-control">
-            <div class="text-danger" *ngIf="registerEmail.touched && !registerEmail.valid">
+            <div class="text-danger" *ngIf="(f.submitted || registerEmail.touched) && !registerEmail.valid">
               <div *ngIf="registerEmail.errors.required">Please enter your email address</div>
               <div *ngIf="registerEmail.errors.email">Please enter valid email address</div>
             </div>
@@ -34,10 +34,12 @@
                               name="registerPassword" 
                               id="registerPassword" 
                               class="form-control">
-              <div class="text-danger" *ngIf="registerPassword.touched && !registerPassword.valid">
+              <div class="text-danger" *ngIf="(f.submitted || registerPassword.touched) && !registerPassword.valid">
                 <div *ngIf="registerPassword.errors.required">Please enter your password</div>
               </div>
           </div>
-          <button class="btn btn-secondary" type="submit">Register</button>
+          <div class="my-4">
+            <button class="btn btn-primary w-100" type="submit">Register</button>
+          </div>
         </form>
       </div>

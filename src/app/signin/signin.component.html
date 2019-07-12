@@ -1,5 +1,5 @@
-<div class="container my-4">
-        <form>
+<div class="container my-5 form-width">
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
           <div class="form-group">
             <label for="signInEmail">Email</label>
             <input required email ngModel 
@@ -8,7 +8,7 @@
                             id="signInEmail" 
                             type="text"
                             class="form-control">
-            <div class="text-danger" *ngIf="signInEmail.touched && !signInEmail.valid">
+            <div class="text-danger" *ngIf="(f.submitted || signInEmail.touched) && !signInEmail.valid">
               <div *ngIf="signInEmail.errors.required">Please enter your email address</div>
               <div *ngIf="signInEmail.errors.email">Please enter valid email address</div>
             </div>
@@ -21,11 +21,16 @@
                               name="signInPassword" 
                               id="signInPassword" 
                               class="form-control">
-              <div class="text-danger" *ngIf="signInPassword.touched && !signInPassword.valid">
+              <div class="text-danger" *ngIf="(f.submitted || signInPassword.touched) && !signInPassword.valid">
                 <div *ngIf="signInPassword.errors.required">Please enter your password</div>
               </div>
           </div>
-          <button class="btn btn-primary mr-3" type="button">Sign in</button>
-          <a class="btn btn-secondary" href="register">Register</a>
+          <div class="my-4">
+            <button class="btn btn-primary w-100" type="submit">Sign in</button>
+          </div>
+          <div class="my-4">
+            <p>New user? Regiser here</p>
+            <a class="btn btn-secondary w-100" href="register">Register</a>
+          </div>
         </form>
       </div>
