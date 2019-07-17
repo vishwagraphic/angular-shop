@@ -9,6 +9,7 @@ import { SharedService } from './../../services/shared.service';
 export class TopNavComponent implements OnInit {
   isSigned: boolean;
   userName: String;
+  count: Number;
 
   constructor(private shared: SharedService) { }
 
@@ -22,7 +23,12 @@ export class TopNavComponent implements OnInit {
     localStorage.clear()
   }
   ngOnInit() {
-    this.shared.currentUser.subscribe(user => this.isSigned = user.isSigned)
-    this.shared.currentUser.subscribe(user => this.userName = user.userName)
+    this.shared.currentUser.subscribe(user => 
+      {
+        this.isSigned = user.isSigned,
+        this.userName = user.userName
+      }
+    )
+    this.shared.currCart.subscribe(cart => this.count = cart.count)
   }
 }

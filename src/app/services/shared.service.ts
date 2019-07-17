@@ -9,29 +9,23 @@ export class SharedService {
 
   private user = new BehaviorSubject<any>({
     isSigned : localStorage.isSigned || false,
-    userName : localStorage.username || ''
+    userName : localStorage.username || '',
+    email: localStorage.useremail || ''
   });
   currentUser = this.user.asObservable();
-  /* currentMessage = this.isSigned.asObservable();
-  private userName = new BehaviorSubject('')
-  currentName = this.userName.asObservable();
- */
+  
   changeStatus = function(currUser:object) {
     this.user.next(currUser)
   }
-  /* changeUserName = function(name: String){
-    console.log(name)
-    //this.user.userName.next(name)
-  } */
-
+  
   private cart = new BehaviorSubject<any>({
     count : localStorage.cartCount || 0,
     idArr : localStorage.idArr || {}
   });
+  currCart = this.cart.asObservable();
 
-  changeCart = function(localStorage:object) {
-    this.cart.next(localStorage)
+  changeCart = function(curCart:object) {
+    this.cart.next(curCart)
   }
-  
 
 }
