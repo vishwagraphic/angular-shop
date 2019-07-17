@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import {SigninService} from './../services/signin.service';
 import {Sign} from './sign';
 import { Router } from '@angular/router';
+import { SharedService } from './../services/shared.service';
 
 @Component({
   selector: 'app-signin',
@@ -12,12 +13,22 @@ import { Router } from '@angular/router';
 export class SigninComponent implements OnInit {
   subscription: Subscription;
   user = new Sign('', '');
-  constructor(private signInService: SigninService, private _router:Router) { }
+  constructor(private signInService: SigninService, private _router:Router, private shared: SharedService) { }
 
   signInForm() {
     this.subscription = this.signInService.signInUser(this.user).subscribe(
       data => {
         if(data){
+          let currUser:Object = {
+            isSigned : true,
+            userName : data.name
+          }
+          this.shared.changeStatus(currUser)
+          //this.shared.changeUserName(data.name)
+          localStorage.setItem('isSigned', 'true')
+          localStorage.setItem('userid', data.id)
+          localStorage.setItem('username', data.name)
+          localStorage.setItem('useremail', data.email)
           this._router.navigate(['']);
         }
       },
@@ -27,6 +38,7 @@ export class SigninComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
 }

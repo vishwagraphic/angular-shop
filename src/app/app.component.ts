@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SharedService } from './services/shared.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-shop';
+
+  isSigned:boolean;
+
+  constructor(private data: SharedService) { }
+
+  ngOnInit() {
+    this.data.currentUser.subscribe(status => console.log(status))
+  }
 }
