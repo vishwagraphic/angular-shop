@@ -19,16 +19,20 @@
       <li>
         <div class="dropdown">
           <a class="dropdown-toggle" *ngIf="!isSigned" class="text-white" href="signin">Sign in</a>
-          <a class="dropdown-toggle" data-toggle="dropdown" class="text-white" *ngIf="isSigned" href="#">Hi, {{userName.split(' ')[0]}}</a>
+          <a class="dropdown-toggle text-white" data-toggle="dropdown" *ngIf="isSigned" href="#">
+            <em>Hi, {{userName.split(' ')[0]}}</em>
+          </a>
           <ul class="dropdown-menu" data-toggle="dropdown" *ngIf="isSigned" role="menu" aria-labelledby="dLabel">            
-            <li><a class="dropdown-item" (click)="onSignout($event)">Sign out</a></li>
+            <li><a class="dropdown-item" href="" (click)="onSignout($event)">Sign out</a></li>
           </ul>
         </div>   
         </li>
         <li class="nav-item text-white">
+          <a href="cart" class="text-white">
             <span class="cart-count">{{count}}</span>
             <img src="../../../assets/cart-icon.png" height="25" />
-          </li>
+          </a>
+        </li>
     </ul>
     <!-- <ul class="navbar-nav ml-auto" >
       <li>

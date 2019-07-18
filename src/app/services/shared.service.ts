@@ -28,4 +28,14 @@ export class SharedService {
     this.cart.next(curCart)
   }
 
+  imgUrlExtract = function(product:any) {
+    let imgArr = []
+    imgArr = product.imageurls.split(',')
+    for (let i = 0; i < imgArr.length; i++) {
+      if (imgArr[i].indexOf('bbystatic') > -1) {
+        product.imageurls = imgArr[i]
+      }
+    }
+  }
+
 }

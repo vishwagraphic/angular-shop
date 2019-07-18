@@ -1,0 +1,14 @@
+<div>
+    <div class="container my-4">
+        <div class="alert alert-info clearfix" role="alert" >
+            <span class="dib py-1 font-weight-bold">Products</span>
+        </div>
+        <div class="container tc">
+            <div class="row">
+                <div class="col" *ngFor="let product of products">
+                    <app-tile [product]="product"></app-tile>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

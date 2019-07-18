@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-
+import { Router} from '@angular/router'
 import {DealProductsService} from './../services/deal-products.service'
 
 @Component({
@@ -21,8 +21,13 @@ export class HomeComponent implements OnInit {
       }
     }
   }
-
-  constructor(private dealProductsService: DealProductsService ) { 
+  onDealClick () {
+    this.router.navigate(['/products'], { queryParams: { type: 'dealProducts' } });
+  }
+  onLowCostClick () {
+    this.router.navigate(['/products'], { queryParams: { type: 'lowCostProducts' } });
+  }
+  constructor(private dealProductsService: DealProductsService, private router:Router ) { 
     this.subscription = this.dealProductsService.getDealProducts().subscribe(deals => {
       this.dealProducts = deals
       this.dealProducts.forEach(product => {

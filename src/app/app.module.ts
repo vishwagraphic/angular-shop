@@ -11,13 +11,17 @@ import { HomeModule } from './home/home.module';
 import { SigninModule } from './signin/signin.module';
 import { RegisterModule } from './register/register.module';
 import {AboutComponent} from './about/about.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CartComponent } from './cart/cart.component';
+import { ProductsComponent } from './products/products.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CartComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
