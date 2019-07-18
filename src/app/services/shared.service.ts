@@ -10,7 +10,7 @@ export class SharedService {
   private user = new BehaviorSubject<any>({
     isSigned : localStorage.isSigned || false,
     userName : localStorage.username || '',
-    email: localStorage.useremail || ''
+    useremail: localStorage.useremail || ''
   });
   currentUser = this.user.asObservable();
   

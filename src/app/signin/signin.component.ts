@@ -21,10 +21,12 @@ export class SigninComponent implements OnInit {
         if(data){
           let currUser:Object = {
             isSigned : true,
-            userName : data.name
+            userName : data.name,
+            useremail: data.email
           }
           this.shared.changeStatus(currUser)
           //this.shared.changeUserName(data.name)
+          console.log(JSON.stringify(data))
           localStorage.setItem('isSigned', 'true')
           localStorage.setItem('userid', data.id)
           localStorage.setItem('username', data.name)

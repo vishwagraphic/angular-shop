@@ -13,4 +13,7 @@ export class CartitemService {
   postCart(user:any) {
     return this.http.post<any>('https://vue-react-server.herokuapp.com/postCart', user)
   }
+  getCartDetails(email:string) {
+    return this.http.post<any>('https://vue-react-server.herokuapp.com/cartDetails', {email})
+  }
 }

@@ -10,6 +10,8 @@ export class TopNavComponent implements OnInit {
   isSigned: boolean;
   userName: String;
   count: Number;
+  useremail:string
+  idArr : object
 
   constructor(private shared: SharedService) { }
 
@@ -17,9 +19,15 @@ export class TopNavComponent implements OnInit {
     event.preventDefault();
     let currUser:Object = {
       isSigned : false,
-      userName : ''
+      userName : '',
+      useremail: '',
+    }
+    let currCart:Object = {
+      count: 0,
+      idArr: {}
     }
     this.shared.changeStatus(currUser)
+    this.shared.changeCart(currCart)
     localStorage.clear()
   }
   ngOnInit() {
@@ -27,8 +35,12 @@ export class TopNavComponent implements OnInit {
       {
         this.isSigned = user.isSigned,
         this.userName = user.userName
+        this.useremail = user.useremail
       }
     )
-    this.shared.currCart.subscribe(cart => this.count = cart.count)
+    this.shared.currCart.subscribe(cart => {
+      this.count = cart.count,
+      this.idArr = cart.idArr
+    })
   }
 }
