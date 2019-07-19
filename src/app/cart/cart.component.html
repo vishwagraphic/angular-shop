@@ -8,21 +8,26 @@
         </div>
         <div cols="4" class="col">
             <ul class="ltn">
-                <li class="fb pointer hover"> {{product.name}} </li>
+                <li class="font-weight-bold pointer hover"> {{product.name}} </li>
                 <li>{{product.brand}}</li>
             </ul>
         </div>
-        <div class="col">
+        <div cols="2" class="col">
             <div class="font-weight-bold text-danger mt-3 text-right">${{product.prices_amountmin}}</div>
         </div>
         <div class="col">
             <div class="mt-3" style="width:80px">
-                <input type="text" class="w-100 text-center" />
+                <input type="text" class="form-control w-100 text-center" 
+                name="count"
+                value="{{product.quantity}}"
+                id="{{product.productid}}"
+                (change)="onChange($event)"
+                type="text" />
             </div>
         </div>
         <div class="col">
             <div class="text-info mt-3">
-                <button class="danger">Delete</button>
+                <button class="btn btn-danger">Delete</button>
             </div>
         </div>
     </div>

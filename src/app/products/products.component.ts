@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from './../services/products.service'
 import { SharedService } from './../services/shared.service'
 import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -14,15 +15,28 @@ export class ProductsComponent implements OnInit {
   type: ''
   title: ''
 
-  constructor(private productsService: ProductsService, private shared: SharedService) {
+  constructor(private productsService: ProductsService, private shared: SharedService, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      this.type = params.type
+    })
+    this.getProducts()
+  }
+
+  getProducts () {
     this.subscription = this.productsService.getProducts(this.type).subscribe(products => {
-      this.products = products
-      this.products.forEach((product:any, index) => {
-        if(index !== 0){
-          this.shared.imgUrlExtract(product)
-        }else{
+      let productsitem:any = products
+      let filteredResponse = productsitem.filter((product:any) => {
+        if (product.type === undefined) {
+          return product
+        } else {
+          this.title = product.type
         }
+      })
+      filteredResponse.forEach((product:any) => {
+        this.shared.imgUrlExtract(product)
       });
+      this.products = filteredResponse
+      
     })
   }
 

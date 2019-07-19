@@ -20,7 +20,7 @@ export class SharedService {
   
   private cart = new BehaviorSubject<any>({
     count : localStorage.cartCount || 0,
-    idArr : localStorage.idArr || {}
+    idArr : localStorage.cartArr || {}
   });
   currCart = this.cart.asObservable();
 
