@@ -21,13 +21,13 @@
                 name="count"
                 value="{{product.quantity}}"
                 id="{{product.productid}}"
-                (change)="onChange($event)"
+                (change) = onChange($event)
                 type="text" />
             </div>
         </div>
         <div class="col">
             <div class="text-info mt-3">
-                <button class="btn btn-danger">Delete</button>
+                <button class="btn btn-danger" id="{{product.productid}}" (click) = onDelete($event)>Delete</button>
             </div>
         </div>
     </div>

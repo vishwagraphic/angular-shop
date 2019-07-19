@@ -18,7 +18,6 @@ export class CartComponent implements OnInit {
 
   constructor(private cartService: CartService, private shared: SharedService, private cartItem: CartitemService) {
     this.shared.currCart.subscribe(cart => this.idArr = cart.idArr)
-    console.log('IDARRR ' + JSON.stringify(this.idArr))
     this.subscription = this.cartService.getCartProducts(JSON.parse(localStorage.getItem('cartArr'))).subscribe(products => {
       let response:any = products
       response.forEach((product:any) => {
@@ -29,25 +28,40 @@ export class CartComponent implements OnInit {
     })
   }
 
-  onChange (event) {
-    let updateCount = event.target.value - this.qty
-    //console.log(updateCount + ' '  + event.target.id)
+  onChange (event:any) {
+    this.onEvent(event, event.target.value)
+  }
+  onDelete (event:any) {
+    this.onEvent(event, Number(0))
+    let target = event.target
+    target.parentNode.parentNode.parentNode.remove()
+  }
+  onEvent (event, value:number) {
+    let oldvalue:any
+    let idArr = JSON.parse(this.idArr)
+    if (event.target.id in JSON.parse(this.idArr)){
+      oldvalue = idArr[event.target.id]
+    }
+    let updateCount = value - oldvalue
     let id = event.target.id
     this.cartUpdate(Number(updateCount), id)
-    this.qty = event.target.value
   }
 
   cartUpdate(curcount:any, id:any) {
-    let dcount:any;
-    dcount = JSON.parse(this.idArr) || {}
-    let totalqty = parseInt(curcount) + parseInt(dcount[id])
+    
+    let dcount:object = JSON.parse(this.idArr) || {}
+    let totalqty = curcount + dcount[id]
+    console.log(typeof(dcount) + ' '+ typeof(this.idArr))
     if (totalqty !== 0) {
       dcount[id] = (dcount[id] || 0) + curcount
+      //dcount = Object.assign({}, dcount)
     } else {
       delete dcount[id]
     }
     localStorage.setItem('cartCount', Number(localStorage.getItem('cartCount')) + curcount)
     localStorage.setItem('cartArr', JSON.stringify(dcount))
+    console.log(localStorage.getItem('cartCount'))
+    //this.updateCart(count, dcount)
     let dcounts = JSON.stringify(dcount)
     this.shared.currentUser.subscribe(user => this.email = user.useremail)
     let curuser:any = {
@@ -61,6 +75,7 @@ export class CartComponent implements OnInit {
     }
     this.shared.changeCart(curCart)
     this.subscription = this.cartItem.updateCart(curuser).subscribe(data => {
+      console.log(JSON.stringify(curuser))
       if(data === 0){
         this.subscription = this.cartItem.postCart(curuser).subscribe(data => {
           console.log(data)
