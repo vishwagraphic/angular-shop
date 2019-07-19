@@ -11,16 +11,18 @@ import { SharedService } from './../../services/shared.service'
 export class TileComponent implements OnInit {
   @Input() product: any;
   subscription: Subscription;
-  email: string
-  idArr : object
+  email: string;
+  idArr:any;
   constructor (private cartItem:CartitemService, private shared: SharedService) {}
 
   onAddToCart(curcount:any, id:any) {
     this.shared.currCart.subscribe(cart => this.idArr = cart.idArr)
-    let dcount = this.idArr || {}
+    let dcount:object = JSON.parse(this.idArr) || {}
     let totalqty = curcount + dcount[id]
+    console.log(typeof(dcount) + ' '+ typeof(this.idArr))
     if (totalqty !== 0) {
       dcount[id] = (dcount[id] || 0) + curcount
+      //dcount = Object.assign({}, dcount)
     } else {
       delete dcount[id]
     }
