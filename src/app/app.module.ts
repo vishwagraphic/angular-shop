@@ -14,7 +14,8 @@ import { RegisterModule } from './register/register.module';
 import {AboutComponent} from './about/about.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CartComponent } from './cart/cart.component';
-import { ProductsComponent } from './products/products.component'
+import { ProductsComponent } from './products/products.component';
+import { ProductDetailsComponent } from './product-details/product-details.component'
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ProductsComponent } from './products/products.component'
     AboutComponent,
     PageNotFoundComponent,
     CartComponent,
-    ProductsComponent
+    ProductsComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

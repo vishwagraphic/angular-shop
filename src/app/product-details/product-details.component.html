@@ -1,0 +1,32 @@
+<div class="container my-3">
+    <div class="alert alert-secondary clearfix">
+        <span class="dib py-1 font-weight-bold"> {{product.name}}</span>
+    </div>
+    <div class="container">
+            <div class="row">
+                <div class="col-5" cols="5">
+                    <img src={{product.imageurls}} height="auto" width="350" alt="image" />
+                </div>
+                <div class="col-5" cols="5">
+                    <div>
+                        <h5>{{product.categories}}</h5>
+                        <p>{{product.brand}}</p>
+                        <p><star-rating value={{product.rating}} checkedcolor="orange" uncheckedcolor="gray" size="15px"></star-rating><span>575 customer reviews</span></p>
+                        <ul class="px-0">
+                            <li>{{product.categories}}</li>
+                            <li>INCLUDES DELUXE ACCESSORY COOKING KIT: A Divider for the cooking basket, 50 perforated parchment steaming papers, an 8 inch cake carrel, an 8 inch pizza pan, multi-purpose rack with 3 stainless steel skewers, cupcake silicone pan, and rubber mat.</li>
+                <li>INCLUDES RECIPES: Included is a Recipe Book that has 100 Air Fryer recipes. The Yedi Houseware mobile app for iOS and Android and the Yedi Houseware Appliances website has new Air Fryer recipes & content uploaded every week! Also comes with a COOKING TIME TABLE.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <p>Get it <strong>{{product.freeShipping}}</strong> if you choose FREE Shipping at checkout.</p>
+                    <p>Get it <strong>{{product.paidShipping}}</strong> if you order within 31 hrs 33 mins and choose paid shipping at checkout.</p>
+                    <button class="btn btn-primary btn-block" (click)="onCartClick(1, product.productid)">Add to Cart</button>
+                    <button class="btn btn-danger btn-block">Buy now</button><br />
+                    <p>Sold by {{product.brand}}</p>
+                    <p>Item arrives in packaging that reveals what's inside.</p>
+                </div>
+            </div>
+        </div>
+</div>

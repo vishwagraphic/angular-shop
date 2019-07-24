@@ -2,14 +2,16 @@
     <div class="card mb-2">
         <div class="card-body text-center">
             <p class="img-container text-center pointer" style="height:130px; width: 190px">
-                <img src={{product.imageurls}} height="100%" width="auto" alt="image" />
+                <a href="productDetails/{{product.productid}}"  id={product.productid}><img src={{product.imageurls}} height="100%" width="auto" alt="image" /></a>
             </p>
             <p class="my-2 d-block text-left font-weight-bold text-danger">
                 {{product.brand}}
             </p>
             <div class="card-text text-left">
                 <ul class="ltn">
-                <li class="fb pointer hover" style="height:80px; line-height:20px; overflow-y:hidden"> {{product.name}}</li>
+                <li class="fb pointer hover" style="height:80px; line-height:20px; overflow-y:hidden"> 
+                        <a href="productDetails/{{product.productid}}">{{product.name}}</a>
+                </li>
                 <li><star-rating value={{product.rating}} checkedcolor="orange" uncheckedcolor="gray" size="15px"></star-rating></li>
                 <li>${{product.prices_amountmin}}</li>
                 </ul>

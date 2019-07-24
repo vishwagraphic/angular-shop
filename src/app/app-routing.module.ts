@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 import { CartComponent } from './cart/cart.component';
 import { ProductsComponent } from './products/products.component'
+import { ProductDetailsComponent } from './product-details/product-details.component';
 const routes: Routes = [
   {
     path: '',
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'products',
     component: ProductsComponent
+  },
+  {
+    path: 'productDetails/:id',
+    component: ProductDetailsComponent
   },
   {
     path: "**",
