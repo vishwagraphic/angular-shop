@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
+import { CartitemService } from '../services/cartitem.service'
 import { Subscription } from 'rxjs';
 import { SharedService } from '../services/shared.service';
-import { CartitemService } from '../services/cartitem.service';
+import { NgxSpinnerService } from 'ngx-spinner'
 
 @Component({
   selector: 'app-cart',
@@ -16,7 +17,8 @@ export class CartComponent implements OnInit {
   email: string;
   idArr:any;
 
-  constructor(private cartService: CartService, private shared: SharedService, private cartItem: CartitemService) {
+  constructor(private cartService: CartService, private shared: SharedService, private cartItem: CartitemService,
+              private spinner: NgxSpinnerService) {
     this.shared.currCart.subscribe(cart => this.idArr = cart.idArr)
     this.subscription = this.cartService.getCartProducts(JSON.parse(localStorage.getItem('cartArr'))).subscribe(products => {
       let response:any = products
@@ -25,6 +27,7 @@ export class CartComponent implements OnInit {
         this.qty = product.quantity
       });
       this.cartProducts = response
+      this.spinner.hide()
     })
   }
 
@@ -75,7 +78,6 @@ export class CartComponent implements OnInit {
     }
     this.shared.changeCart(curCart)
     this.subscription = this.cartItem.updateCart(curuser).subscribe(data => {
-      console.log(JSON.stringify(curuser))
       if(data === 0){
         this.subscription = this.cartItem.postCart(curuser).subscribe(data => {
           console.log(data)
@@ -87,7 +89,7 @@ export class CartComponent implements OnInit {
   
 
   ngOnInit() {
-
+    this.spinner.show()
   }
 
 }

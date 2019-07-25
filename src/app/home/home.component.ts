@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Router} from '@angular/router'
 import {DealProductsService} from './../services/deal-products.service'
-
+import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -27,23 +27,25 @@ export class HomeComponent implements OnInit {
   onLowCostClick () {
     this.router.navigate(['/products'], { queryParams: { type: 'lowCostProducts' } });
   }
-  constructor(private dealProductsService: DealProductsService, private router:Router ) { 
+  constructor(private dealProductsService: DealProductsService, private router:Router, private spinner: NgxSpinnerService ) { 
     this.subscription = this.dealProductsService.getDealProducts().subscribe(deals => {
       this.dealProducts = deals
       this.dealProducts.forEach(product => {
         this.imgUrlExtract(product)
       });
-      
+      this.spinner.hide()
     })
     this.subscription = this.dealProductsService.getLowCostProducts().subscribe(lowCost => {
       this.lowCostProducts = lowCost
       this.lowCostProducts.forEach(product => {
         this.imgUrlExtract(product)
       });
+      this.spinner.hide()
     })
   }
 
   ngOnInit() {
+    this.spinner.show()
   }
 
 }

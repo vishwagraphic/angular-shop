@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { CartComponent } from './cart/cart.component';
 import { ProductsComponent } from './products/products.component'
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { RegConfirmComponent } from './reg-confirm/reg-confirm.component';
 const routes: Routes = [
   {
     path: '',
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'registrationConfirmation',
+    component: RegConfirmComponent
   },
   {
     path: 'cart',

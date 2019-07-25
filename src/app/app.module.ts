@@ -15,8 +15,9 @@ import {AboutComponent} from './about/about.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CartComponent } from './cart/cart.component';
 import { ProductsComponent } from './products/products.component';
-import { ProductDetailsComponent } from './product-details/product-details.component'
-
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { RegConfirmComponent } from './reg-confirm/reg-confirm.component'
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     PageNotFoundComponent,
     CartComponent,
     ProductsComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    RegConfirmComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     FormsModule,
     HomeModule,
     SigninModule,
-    RegisterModule
+    RegisterModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

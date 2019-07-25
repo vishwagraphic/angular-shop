@@ -51,6 +51,9 @@ ngx-bootstrap/datepicker
 
 ngx-bootstrap/utils
 
+ngx-spinner
+MIT
+
 rxjs
 Apache-2.0
                                Apache License
