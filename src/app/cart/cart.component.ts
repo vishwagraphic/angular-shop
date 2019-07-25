@@ -11,7 +11,7 @@ import { CartitemService } from '../services/cartitem.service';
 })
 export class CartComponent implements OnInit {
   subscription: Subscription
-  cartProducts: any
+  cartProducts: object
   qty:number
   email: string;
   idArr:any;
@@ -36,7 +36,7 @@ export class CartComponent implements OnInit {
     let target = event.target
     target.parentNode.parentNode.parentNode.remove()
   }
-  onEvent (event, value:number) {
+  onEvent (event:any, value:number) {
     let oldvalue:any
     let idArr = JSON.parse(this.idArr)
     if (event.target.id in JSON.parse(this.idArr)){
@@ -64,12 +64,12 @@ export class CartComponent implements OnInit {
     //this.updateCart(count, dcount)
     let dcounts = JSON.stringify(dcount)
     this.shared.currentUser.subscribe(user => this.email = user.useremail)
-    let curuser:any = {
+    let curuser:object = {
       email: this.email,
       productids: dcounts,
       count: localStorage.getItem('cartCount')
     }
-    let curCart:any = {
+    let curCart:object = {
       count: localStorage.getItem('cartCount'),
       idArr: dcounts
     }
