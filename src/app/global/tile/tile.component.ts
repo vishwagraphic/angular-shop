@@ -17,13 +17,15 @@ export class TileComponent implements OnInit {
   constructor(private cartItem: CartitemService, private shared: SharedService, private _router: Router) { }
 
   onAddToCart(curcount: any, id: any) {
-    this.shared.currCart.subscribe(cart => this.idArr = cart.idArr)
-    let dcount: object = JSON.parse(this.idArr) || {}
+    let dcount:object
+    if(this.isEmpty(this.idArr)){
+      dcount = {}
+    } else{
+      dcount = JSON.parse(this.idArr)
+    }
     let totalqty = curcount + dcount[id]
-    console.log(typeof (dcount) + ' ' + typeof (this.idArr))
     if (totalqty !== 0) {
       dcount[id] = (dcount[id] || 0) + curcount
-      //dcount = Object.assign({}, dcount)
     } else {
       delete dcount[id]
     }
@@ -44,7 +46,6 @@ export class TileComponent implements OnInit {
     }
     this.shared.changeCart(curCart)
     this.subscription = this.cartItem.updateCart(curuser).subscribe(data => {
-      console.log(JSON.stringify(curuser))
       if (data === 0) {
         this.subscription = this.cartItem.postCart(curuser).subscribe(data => {
           console.log(data)
@@ -52,5 +53,15 @@ export class TileComponent implements OnInit {
       }
     })
   }
-  ngOnInit() { }
+  isEmpty(obj:object) {
+    for(var key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        return false;
+      }
+    }
+    return true;
+  }
+  ngOnInit() {
+    this.shared.currCart.subscribe(cart => this.idArr = cart.idArr)
+  }
 }
